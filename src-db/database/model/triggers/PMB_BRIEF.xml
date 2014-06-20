@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+  <database name="TRIGGER PMB_BRIEF">
+    <trigger name="PMB_BRIEF" table="PMB_PROJECT_BRIEF" fires="before" insert="true" update="true" delete="false" foreach="row">
+      <body><![CDATA[CBID VARCHAR(32);
+IDBRIEF VARCHAR(32);
+TIT VARCHAR(60);
+GEN VARCHAR(60);
+TRAD VARCHAR(60);
+NAM VARCHAR(100);
+BEGIN
+	IDBRIEF := :NEW.C_PROJECT_ID;
+
+	SELECT em_pmb_title,em_pmb_genre,c_bpartner_id INTO TIT,GEN,CBID FROM C_PROJECT WHERE C_PROJECT_ID = IDBRIEF;
+
+	--Raise Exception '%','Genero '||gen;
+
+	SELECT ARLT.NAME INTO TRAD FROM AD_Ref_List ARL
+	LEFT JOIN AD_Ref_List_Trl ARLT ON ARLT.AD_Ref_List_ID = ARL.AD_Ref_List_ID
+	WHERE  ARL.VALUE=GEN limit 1;
+
+	:NEW.TITLE := TIT;
+	:NEW.GENRE := TRAD;
+
+	SELECT NAME INTO NAM FROM C_BPARTNER WHERE C_BPARTNER_ID = CBID;
+
+	:NEW.AUTOR := NAM;
+
+	
+RETURN NEW;
+END PMB_BRIEF
+]]></body>
+    </trigger>
+  </database>
