@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
   <database name="TRIGGER PMB_RATINGSAUTHOR">
-    <trigger name="PMB_RATINGSAUTHOR" table="C_PROJECT" fires="before" insert="true" update="true" delete="false" foreach="row">
+    <trigger name="PMB_RATINGSAUTHOR" table="PMB_AUTHOR" fires="before" insert="true" update="true" delete="false" foreach="row">
       <body><![CDATA[PARTNERID VARCHAR(32);
 RATIN VARCHAR(60);
 BEGIN
@@ -11,10 +11,11 @@ BEGIN
 
 		SELECT EM_PMB_RATINGSPARTNER INTO RATIN FROM C_BPARTNER WHERE C_BPARTNER_ID = PARTNERID;
 		
+		--RAISE ratin;
 		
 		IF RATIN IS NOT NULL THEN
 
-			 :NEW.EM_PMB_RATINGSPARTNER = RATIN;
+			 :NEW.RATINGS = RATIN;
 			 --RAISE NO_DATA_FOUND||RATIN;
 		END IF;
 	END IF;

@@ -21,10 +21,6 @@
         <default/>
         <onCreateDefault/>
       </column>
-      <column name="EM_PMB_EXPERIENCE" primaryKey="false" required="false" type="VARCHAR" size="80" autoIncrement="false">
-        <default/>
-        <onCreateDefault/>
-      </column>
       <column name="EM_PMB_GENRE" primaryKey="false" required="false" type="VARCHAR" size="60" autoIncrement="false">
         <default/>
         <onCreateDefault/>
@@ -42,10 +38,6 @@
         <onCreateDefault/>
       </column>
       <column name="EM_PMB_RATINGS" primaryKey="false" required="false" type="VARCHAR" size="60" autoIncrement="false">
-        <default/>
-        <onCreateDefault/>
-      </column>
-      <column name="EM_PMB_RATINGSPARTNER" primaryKey="false" required="false" type="VARCHAR" size="60" autoIncrement="false">
         <default/>
         <onCreateDefault/>
       </column>

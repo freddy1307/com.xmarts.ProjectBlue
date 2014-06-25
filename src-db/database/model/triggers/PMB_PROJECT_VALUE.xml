@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+  <database name="TRIGGER PMB_PROJECT_VALUE">
+    <trigger name="PMB_PROJECT_VALUE" table="C_PROJECT" fires="before" insert="true" update="true" delete="false" foreach="row">
+      <body><![CDATA[
+    /*************************************************************************
+    * The contents of this file are subject to the Compiere Public
+    * License 1.1 ("License"); You may not use this file except in
+    * compliance with the License. You may obtain a copy of the License in
+    * the legal folder of your Openbravo installation.
+    * Software distributed under the License is distributed on an
+    * "AS IS" basis, WITHOUT WARRANTY OF ANY KIND, either express or
+    * implied. See the License for the specific language governing rights
+    * and limitations under the License.
+    * The Original Code is  Compiere  ERP &  Business Solution
+    * The Initial Developer of the Original Code is Jorg Janke and ComPiere, Inc.
+    * Portions created by Jorg Janke are Copyright (C) 1999-2001 Jorg Janke,
+    * parts created by ComPiere are Copyright (C) ComPiere, Inc.;
+    * All Rights Reserved.
+    * Contributor(s): Openbravo SLU
+    * Contributions are Copyright (C) 2001-2012 Openbravo, S.L.U.
+    *
+    * Specifically, this derivative work is based upon the following Compiere
+    * file and version.
+    *************************************************************************
+    * $Id: C_Project_Trg.sql,v 1.3 2002/10/23 03:16:57 jjanke Exp $
+    ***
+    * Title: Project new record
+    * Description:
+    *  - create default accounts
+    *  - create treenode
+    ************************************************************************/
+
+ADCLIENT VARCHAR(32);    
+VAL INTEGER;
+BEGIN
+	
+	ADCLIENT := :NEW.AD_CLIENT_ID;
+
+	IF ADCLIENT = 'C35E811E6BCE4808B57813D7F7EE1E1F' or ADCLIENT = 'DE5F829953344241BFCA9099226E3869' then
+	
+	SELECT MAX(VALUE::INTEGER) INTO VAL FROM C_PROJECT WHERE AD_CLIENT_ID = ADCLIENT;
+
+	:NEW.VALUE := VAL +1;
+
+	end if;
+
+
+RETURN NEW;
+END PMB_PROJECT_VALUE
+]]></body>
+    </trigger>
+  </database>
