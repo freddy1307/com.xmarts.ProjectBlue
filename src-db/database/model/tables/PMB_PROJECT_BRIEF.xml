@@ -33,14 +33,6 @@
         <default/>
         <onCreateDefault/>
       </column>
-      <column name="ISCONCLAVE" primaryKey="false" required="false" type="CHAR" size="1" autoIncrement="false">
-        <default><![CDATA[Y]]></default>
-        <onCreateDefault/>
-      </column>
-      <column name="STATUS_PROJECT" primaryKey="false" required="false" type="VARCHAR" size="60" autoIncrement="false">
-        <default/>
-        <onCreateDefault/>
-      </column>
       <column name="AUTOR" primaryKey="false" required="false" type="VARCHAR" size="100" autoIncrement="false">
         <default/>
         <onCreateDefault/>

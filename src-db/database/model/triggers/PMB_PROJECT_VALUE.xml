@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
   <database name="TRIGGER PMB_PROJECT_VALUE">
-    <trigger name="PMB_PROJECT_VALUE" table="C_PROJECT" fires="before" insert="true" update="true" delete="false" foreach="row">
+    <trigger name="PMB_PROJECT_VALUE" table="C_PROJECT" fires="before" insert="true" update="false" delete="false" foreach="row">
       <body><![CDATA[
     /*************************************************************************
     * The contents of this file are subject to the Compiere Public
