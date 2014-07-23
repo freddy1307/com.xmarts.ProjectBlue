@@ -73,5 +73,9 @@
         <default/>
         <onCreateDefault/>
       </column>
+      <column name="EM_PMB_NOTESAUTHOR" primaryKey="false" required="false" type="VARCHAR" size="4000" autoIncrement="false">
+        <default/>
+        <onCreateDefault/>
+      </column>
     </table>
   </database>
